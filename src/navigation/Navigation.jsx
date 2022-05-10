@@ -1,9 +1,9 @@
 import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import AccountScreen from "../screens/Account";
-import FavoriteScreen from "../screens/Favorite";
-import PokedexScreen from "../screens/Pokedex";
+import FavoriteNavigation from "./FavoriteNavigation";
+import PokedexNavigation from "./PokedexNavigation";
+import AccountNavigation from "./AccountNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,8 +11,8 @@ export default function Navigation() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Favorite"
-        component={FavoriteScreen}
+        name="FavoriteStack"
+        component={FavoriteNavigation}
         options={{
           tabBarLabel: "Favoritos",
           headerShown: false,
@@ -22,8 +22,8 @@ export default function Navigation() {
         }}
       />
       <Tab.Screen
-        name="Pokedex"
-        component={PokedexScreen}
+        name="PokedexStack"
+        component={PokedexNavigation}
         options={{
           tabBarLabel: "",
           headerShown: false,
@@ -31,8 +31,8 @@ export default function Navigation() {
         }}
       />
       <Tab.Screen
-        name="Account"
-        component={AccountScreen}
+        name="AccountStack"
+        component={AccountNavigation}
         options={{
           tabBarLabel: "Mi cuenta",
           headerShown: false,
