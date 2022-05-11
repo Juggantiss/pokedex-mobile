@@ -4,11 +4,14 @@ import {
   Text,
   TextInput,
   Button,
-  Keyboard
+  Keyboard,
+  ToastAndroid,
+  Platform
 } from "react-native";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { user, userDetails } from "../../utils/userDB";
 
 export default function LoginForm() {
   const formik = useFormik({
@@ -16,7 +19,21 @@ export default function LoginForm() {
     validationSchema: Yup.object(validationSchema),
     validateOnChange: false,
     onSubmit: (values) => {
-      console.log(values);
+      const { username, password } = values;
+
+      if (username !== user.username || password !== user.password) {
+        if (Platform.OS === "android") {
+          ToastAndroid.show(
+            "El usuario o contraseña son incorrectos",
+            ToastAndroid.SHORT
+          );
+        } else {
+          alert("El usuario o contraseña son incorrectos");
+        }
+      } else {
+        console.log("Login correcto");
+        console.log(userDetails);
+      }
     }
   });
 
