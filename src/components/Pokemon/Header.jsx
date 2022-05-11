@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { capitalize } from "lodash";
-import getColorByType from "../utils/getColorByType";
+import getColorByType from "../../utils/getColorByType";
 
 export default function Header({ name, order, image, type }) {
   const bgStyles = [{ backgroundColor: getColorByType(type), ...styles.bg }];
