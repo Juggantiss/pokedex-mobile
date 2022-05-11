@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   Button,
-  Keyboard,
   ToastAndroid,
   Platform
 } from "react-native";
@@ -12,8 +11,11 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { user, userDetails } from "../../utils/userDB";
+import useAuth from "../../hooks/useAuth";
 
 export default function LoginForm() {
+  const { login } = useAuth();
+
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object(validationSchema),
@@ -31,8 +33,7 @@ export default function LoginForm() {
           alert("El usuario o contraseña son incorrectos");
         }
       } else {
-        console.log("Login correcto");
-        console.log(userDetails);
+        login(userDetails);
       }
     }
   });
