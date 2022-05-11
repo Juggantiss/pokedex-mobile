@@ -4,7 +4,7 @@ import PokemonCard from "./PokemonCard";
 export default function PokemonList({ pokemons }) {
   return (
     <FlatList
-      keyExtractor={(pokemon) => String(pokemon.id)}
+      keyExtractor={(pokemon, index) => String(index)}
       data={pokemons}
       numColumns={2}
       showsVerticalScrollIndicator={false}
