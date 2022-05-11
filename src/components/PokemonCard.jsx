@@ -7,8 +7,11 @@ import {
 } from "react-native";
 import { capitalize } from "lodash";
 import getColorByType from "../utils/getColorByType";
+import { useNavigation } from "@react-navigation/native";
 
 export default function PokemonCard({ pokemon }) {
+  const navigation = useNavigation();
+
   const bgStyles = {
     backgroundColor: getColorByType(pokemon.type),
     ...styles.bgStyles
@@ -16,6 +19,7 @@ export default function PokemonCard({ pokemon }) {
 
   const goToPokemon = () => {
     console.log(`Vamos al pokemon: ${pokemon.name}`);
+    navigation.navigate("Pokemon", { id: pokemon.id });
   };
 
   return (
