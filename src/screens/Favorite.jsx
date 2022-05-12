@@ -1,10 +1,16 @@
-import { Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, Button } from "react-native";
+import { getPokemonFavoriteApi } from "../api/favorite";
 
 export default function Favorite() {
+  const checkFavorites = async () => {
+    const response = await getPokemonFavoriteApi();
+    console.log(response);
+  };
+
   return (
-    <SafeAreaView>
+    <View>
       <Text>Favorite</Text>
-    </SafeAreaView>
+      <Button title="Obtener favoritos" onPress={checkFavorites} />
+    </View>
   );
 }
